@@ -21,5 +21,5 @@ R Script written in R Studio - This script is commented and runs through the 5 r
 
 Codebook:
 
-A code book that indicate all the variables and summaries calculated, along with units, and any other relevant information.
+A code book that defines all of the variables in the R Script and their purpose.
 
