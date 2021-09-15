@@ -1,0 +1,58 @@
+Run_Analysis.R - This is the R Script that performs the 5 steps outlined in the course project instructions.
+
+Note - I pre-downloaded the data and set the working directory into the same folder as the required data on my local drive. This could have been included as an instruction within the 
+script if i had not already saved it locally.
+
+- Data was downloaded from "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+    
+
+#### I read the data into dataframes and assigned them to the below variables:
+
+features <- reads in the features.txt file
+activity_labels <- reads in the activities.txt file
+
+#### test data
+
+subject_test <- reads in the subject_test.txt file
+functions_test <- reads in the X_test.txt file 
+code_test <- reads in the Y_test.txt file 
+
+#### train data
+
+subject_train <- reads in the subject_train.txt file
+functions_train <- reads in the X_train.txt file
+code_train <- reads in the y_train.txt file
+
+#### I merged the test and train files into 1 file based on the functions, subject and code columns.
+
+functions_bind <- a rowbind (rbind) on the functions column
+code_bind <- a rowbind (rbind) on the code column
+subject <- a rowbind (rbind) on the subject column
+combined_data <- a column bind (cbind) on all 3 combined columns above.
+
+
+
+#### I extrtacted only the measurements on the mean and standard deviation for each measurement into a variable named tidy_data
+
+tidy_data <- subsets ther variable created above - combined_data and selects onlt the subject and code columns with the mean and standard deviation (std) for each measurement
+
+
+#### Use descriptive activity names to name the activities in the data set.
+
+tidy_data$code <- I replaced the code names and replaced with corresponding activity taken from second column of the activity_labels variable defined initirially.
+
+
+#### Appropriately labels the data set with descriptive variable names
+
+- code column in tidy_data renamed into activity
+- All Acc in column’s name replaced by Accelerometer
+- All Gyro in column’s name replaced by Gyroscope
+- All BodyBody in column’s name replaced by Body
+- All Mag in column’s name replaced by Magnitude
+- All start with character f in column’s name replaced by Frequency
+- All start with character t in column’s name replaced by Time
+
+
+#### Group the tidied data into a final variable to list the average for each variable grouped by each activity and each subject.
+
+final_average_data is created by sumarizing the tidy_data variable by mean and then grouping by the acticity and suject variables.
